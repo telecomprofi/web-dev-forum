@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="forumApp">
+<!--<html lang="en">-->
+<head>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forum</title>
+  
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+   
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+  
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="#/" class="navbar-brand">Web-Development Forum</a>
+        
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+         data-target="#header-nav" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+      </div>
+
+      <div class="pull-right">
+        <div class="collapse navbar-collapse" id="header-nav">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#/login"><span class="glyphicon glyphicon-log-in accent" aria-hidden="true"></span> Log in</a>
+            </li>
+            <li>
+              <a href="#/register"><span class="glyphicon glyphicon glyphicon-registration-mark accent" aria-hidden="true"></span> Register</a>
+            </li>
+        <!--
+            <li>
+              <a href="#"><span class="glyphicon glyphicon-log-out accent" aria-hidden="true"></span> Log out</a>
+            </li>
+        -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="jumbotron">
+    <div class="container">
+        <h1 class="text-center">Welcome to our Forum!</h1>
+        <p class="text-center">Share your experiences and discover new opportunities</p>
+    </div>
+  </div>
+ 
+  <div class="breadcrumb-inner">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="#/"><span class="glyphicon glyphicon-home accent" aria-hidden="true"></span> Board index</a></li>
+<!--        <li><a href="#/members"> Member list</a></li>-->
+      </ol>
+    </div>
+  </div>
+
+  <main>
+    <ng-view></ng-view>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular-route.min.js"></script>
+  
+  <script src="app.js"></script>
+  <script src="config.js"></script>
+  
+  <script src="src/js/services/userService.js"></script>
+  <script src="src/js/controllers/userCtrl.js"></script>
+  
+</body>
+</html>

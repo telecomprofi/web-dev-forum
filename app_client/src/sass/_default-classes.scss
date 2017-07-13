@@ -1,0 +1,22 @@
+@import "custom-variables";
+
+.accent {
+  color: $accentColor;
+}
+
+.panel {
+  border-color: $accentColor;
+}
+
+.panel-accent {
+  background-color: $accentColor;
+  color: $panelColor;
+  font-weight: 700;
+}
+
+.btn-accent {
+  background-color: $panelColor;
+  border: 1px solid $accentColor;
+  color: $accentColor;
+  font-weight: 700;
+}
