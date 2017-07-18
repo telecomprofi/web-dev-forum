@@ -1,5 +1,9 @@
 @import "custom-variables";
 
+.view-title {
+  margin-bottom: 20px;
+}
+
 .accent {
   color: $accentColor;
 }
@@ -14,9 +18,98 @@
   font-weight: 700;
 }
 
+// Customize style for buttons
 .btn-accent {
   background-color: $panelColor;
   border: 1px solid $accentColor;
   color: $accentColor;
-  font-weight: 700;
+}
+
+.btn-accent-inverse,
+.btn-accent-inverse:active,
+.btn-accent-inverse:focus {
+  background-color: $accentColor;
+  border: 1px solid $accentColor;
+  color: $panelColor;
+  box-shadow: none;
+}
+
+.btn-accent-inverse:hover {
+  background-color: $panelColor;
+  color: $accentColor;
+}
+
+.btn-emphasize, 
+.btn-emphasize:active, 
+.btn-emphasize:focus {
+  background-color: $navbarBg;
+  border: 1px solid $navbarBg;
+  color:$panelColor;
+  box-shadow: none;
+}
+
+.btn-emphasize:hover {
+  background-color: $panelColor;
+  color: $navbarBg;
+}
+
+.btn-emphasize-inverse,
+.btn-emphasize-inverse:active,
+.btn-emphasize-inverse:focus {
+  background-color: $panelColor;
+  border: 1px solid $navbarBg;
+  color: $navbarBg;
+  box-shadow: none;
+}
+
+.btn-emphasize-inverse:hover {
+  background-color: $navbarBg;
+  color: $panelColor;
+}
+
+.btn-control {
+  background-color: transparent;
+  border: 1px solid $panelColor;
+  color: $panelColor;
+  padding: 2px 5px;
+}
+
+.panel-heading {
+  .btn-control:hover
+  {
+    background-color: $panelColor;
+    color: $accentColor;
+  }
+}
+
+.btn-control-inverse,
+.btn-control-inverse:active,
+.btn-control-inverse:focus {
+  background-color: transparent;
+  border: 1px solid $accentColor;
+  color: $accentColor;
+  padding: 2px 5px;
+}
+
+.btn-interact,
+.btn-interact:active,
+.btn-interact:focus {
+  background-color: transparent;
+  border: none;
+  color: $interactColor;
+  box-shadow: none;
+}
+
+.btn-interact:hover {
+  background-color: transparent;
+  color: $accentColor;
+}
+
+.content-controls {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.by-author {
+  font-weight: 400;
 }

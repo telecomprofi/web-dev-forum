@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const babel = require('gulp-babel');
-//const nodemon = require('gulp-nodemon');
 
 const paths = {
   src: 'app_client/src/**/*',

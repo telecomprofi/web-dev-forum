@@ -1,33 +1,17 @@
 'use strict';
 
-//angular.module('Controllers', [])
-//  .controller('userCtrl', userCtrl)
-//  userCtrl.$inject = ['userFactory'];
-//
-//function userCtrl(userFactory) {
-//  
-//  let _self = this;
-//  
-//  this.getUserList = userFactory.getUserList;
-//  
-//  this.getUserList().then(function (res) {
-//    _self.users = res;
-//  }).catch(function (error) {
-//    console.error('Unable to get users');
-//  });
-//}
-
 angular.module('Controllers', [])
   .controller('userCtrl', userCtrl)
-  userCtrl.$inject = ['userFactory', '$scope'];
+  userCtrl.$inject = ['userFactory', '$scope', '$rootScope'];
 
-function userCtrl(userFactory, $scope) {
+function userCtrl(userFactory, $scope, $rootScope) {
   $scope.getUserList = userFactory.getUserList;
-
-  $scope.getUserList().then(function (res) {
-    $scope.users = res;
-    console.log($scope.users);
+  
+  $scope.getUserList().then(function (users) {
+    $rootScope.users = users;
+    $scope.$digest();
   }).catch(function (error) {
     console.error('Unable to get users');
   });
+
 }

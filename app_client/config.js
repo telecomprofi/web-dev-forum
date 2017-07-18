@@ -14,8 +14,14 @@ angular.module("forumApp")
             })
             .when("/members", {
                 templateUrl: "src/view/members.html"
+            })
+            .when("/thread", {
+                templateUrl: "src/view/thread.html"
+            })
+            .when("/profile", {
+                templateUrl: "src/view/profile.html"
             });
-
+  
             $routeProvider.otherwise("/");
 
     });

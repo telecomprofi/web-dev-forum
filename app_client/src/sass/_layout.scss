@@ -1,20 +1,114 @@
 @import "custom-variables";
 @import "default-classes";
 
-body {
-  background-color: $bodyBg;
-}
-
 .navbar {
   margin-bottom: 0;
 }
 
 .jumbotron {
-  background-color: $accentColor;
-  color: $panelColor;
   margin-top: 48px;
 }
 
+// buttons group
+.control-nav {
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+  
+  button {
+    margin-bottom: 10px;
+  }
+  
+  @media (min-width: 420px) {
+    flex-direction: row;
+    justify-content: space-between;
+  
+    button {
+      margin: 0 10px 0 0;
+    }
+  }
+}
+
+// members
 .member-list {
   margin-bottom: 20px;
+}
+
+// topic content
+.content {
+  display: flex;
+  align-items: center;
+  
+  .content-icon {
+    flex: 0 0 8%;
+    font-size: 2.6rem;
+  }
+  
+  .content-inner {
+    flex: 0 0 76%;
+    @media (min-width: 992px) {
+      flex: 0 0 80%;
+    }
+    @media (min-width: 1200px) {
+      flex: 0 0 82%;
+    }
+  }
+  
+  .content-controls {
+    flex: 0 0 20%;
+    @media (min-width: 768px) {
+      flex: 0 0 10%;
+    }
+  }
+}
+
+// tread content
+.thread-list {
+  .content-icon {
+    flex: 0 0 4%;
+    font-size: 2rem;
+  }
+  .content-inner {
+    flex: 0 0 76%;
+    @media (min-width: 768px) {
+      flex: 0 0 86%;
+    }
+  }
+}
+
+// post
+.post {
+  border: 1px solid $dividerColor;
+  border-radius: 4px;
+  & + & {
+    margin-top: 20px;
+  }
+  
+  .post-header,
+  .post-inner {
+    padding: 15px;
+  }
+  
+  .post-header {
+    .content {
+      justify-content: space-between;
+    }
+  }
+  
+  .post-footer {
+    padding: 8px 15px;
+    border-top: 1px solid $dividerColor;
+  }
+}
+
+
+dl {
+  margin-bottom: 0;
+}
+
+.btn-control,
+.btn-control-inverse {
+  & + & {
+    margin-left: 11px;
+  }
 }
