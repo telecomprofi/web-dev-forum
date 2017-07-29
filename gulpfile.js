@@ -1,7 +1,10 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass');
+const gulp         = require('gulp');
+const del          = require('del');
+const sass         = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
-const babel = require('gulp-babel');
+const source       = require('vinyl-source-stream');
+const browserify   = require('browserify');
+const babelify     = require('babelify');
 
 const paths = {
   src: 'app_client/src/**/*',
@@ -18,6 +21,10 @@ const paths = {
   distIndex: 'dist/index.html'
 };
 
+gulp.task('clean', function () {
+  return del.sync('assets');
+});
+
 gulp.task('html', function () {
   return gulp.src(paths.srcHTML)
     .pipe(gulp.dest(paths.assets));
@@ -30,18 +37,18 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(paths.assetsCSS));
 });
 
-gulp.task('babel', function () {
-  return gulp.src(paths.srcJS)
-    .pipe(babel({
-        presets: ['es2015']
-    }))
-    .pipe(gulp.dest(paths.assetsJS));
+gulp.task('browserify', function() {
+  return browserify('app_client/app.js', {debug: true})
+      .transform(babelify, {presets: ["es2015"]})
+      .bundle()
+      .pipe(source('main.js'))
+      .pipe(gulp.dest(paths.assetsJS));
 });
 
-gulp.task('watch', ['html', 'sass', 'babel'], function(){
+gulp.task('watch', ['clean', 'html', 'sass', 'browserify'], function(){
   gulp.watch(paths.srcHTML, ['html']);
   gulp.watch(paths.srcCSS, ['sass']);
-  gulp.watch(paths.srcJS, ['babel']);
+  gulp.watch(paths.srcJS, ['browserify']);
 });
 
 gulp.task('default', ['watch']);

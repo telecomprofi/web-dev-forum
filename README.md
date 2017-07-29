@@ -13,10 +13,7 @@
     $ npm install
     ```
 * run MongoDB server demon `mongod`
-* import test data to MongoDB
-    ```
-    $ mongoimport --db forum --collection users --drop --file testData.json
-    ```
+
 * run gulp
     ```
     $ gulp
@@ -25,4 +22,9 @@
     ```
     $ npm run dev
     ```
+
+* by default server will create admin account in MongoDB with following credentials: 
+  * email: `admin@forum.ua`
+  * password: `password`
+    
 * in your browser open link [http://localhost:3000/](http://localhost:3000/)

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.Promise = Promise;
 
 const dbURI = 'mongodb://localhost/forum';
 //if (process.env.NODE_ENV === 'production') {
@@ -15,9 +16,6 @@ mongoose.connection.on('error',function (err) {
 });
 mongoose.connection.on('disconnected', function () {
   console.log('Mongoose disconnected');
-});
-mongoose.connection.on('open', function () {
-  console.log('Mongoose opened');
 });
 
 require('./user');

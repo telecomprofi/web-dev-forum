@@ -1,27 +1,35 @@
-'use strict';
-
-angular.module("forumApp")
-    .config(function($routeProvider) {
-        $routeProvider
-            .when("/", {
-                templateUrl: "src/view/general.html"
-            }) 
-            .when("/register", {
-                templateUrl: "src/view/register.html"
-            })
-            .when("/login", {
-                templateUrl: "src/view/login.html"
-            })
-            .when("/members", {
-                templateUrl: "src/view/members.html"
-            })
-            .when("/thread", {
-                templateUrl: "src/view/thread.html"
-            })
-            .when("/profile", {
-                templateUrl: "src/view/profile.html"
-            });
+function AppConfig($httpProvider, $stateProvider, $urlRouterProvider) {
+  'ngInject';
   
-            $routeProvider.otherwise("/");
+  $stateProvider
+  .state('app', {
+    abstract: true,
+    templateUrl: 'src/js/layout/app-view.html'
+  });
+  
+  $stateProvider
+  .state('app.general', {
+    url: '/',
+    templateUrl: 'src/js/general/general.html',
+    title: 'General'
+  });
+  
+  $stateProvider
+  .state('app.thread', {
+    url: '/thread',
+    templateUrl: 'src/js/thread/thread.html',
+    title: 'Thread'
+  });
+  
+  $stateProvider
+  .state('app.profile', {
+    url: '/profile',
+    templateUrl: 'src/js/profile/profile.html',
+    title: 'Profile'
+  });
+  
+  $urlRouterProvider.otherwise('/');
 
-    });
+}
+
+export default AppConfig;

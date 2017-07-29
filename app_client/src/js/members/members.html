@@ -1,0 +1,42 @@
+<!--breadcrumb component-->
+ <div class="breadcrumb-inner">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="#/"><span class="glyphicon glyphicon-home accent" aria-hidden="true"></span> Board index</a></li>
+<!--      <li><a href="#/">Thread</a></li>-->
+        <li><a href="#/members"> Member list</a></li>
+    </ol>
+  </div>
+</div>
+ 
+ <div class="member-list" data-ng-cloak>
+  <div class="container">
+    <div class="panel">
+      <div class="panel-heading panel-accent">Member list</div>
+      <table class="table table-hover table-responsive">
+        <thead>
+          <tr>
+            <th class="col-xs-1">#</th>
+            <th class="col-xs-5">First Name</th>
+            <th class="col-xs-5">Last Name</th>
+            <th class="col-xs-1"><span class="glyphicon glyphicon-flag accent" aria-hidden="true"></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in $ctrl.users">
+            <td>{{$index + 1}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.surname}}</td>
+            <td>
+              <div class="checkbox disabled">
+                <label>
+                  <input type="checkbox" value="" disabled>
+                </label>
+              </div>
+           </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
