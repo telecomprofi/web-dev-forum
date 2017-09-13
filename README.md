@@ -8,7 +8,7 @@
 
 ## Deployement steps
 
-* clone GIT repository and switch to folder nataliya.sobkovych/task2 inside repository
+* clone GIT repository
 * install dependencies
     ```
     $ npm install
