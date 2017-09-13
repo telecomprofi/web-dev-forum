@@ -17,10 +17,19 @@ app.use(express.static(path.join(__dirname, '/assets')));
 app.use('/fonts/bootstrap', express.static('node_modules/bootstrap/dist/fonts'));
 app.use('/scripts', express.static('node_modules/bootstrap/dist'));
 app.use('/scripts', express.static('node_modules/jquery/dist'));
+app.use('/scripts', express.static('node_modules/angular-ui-bootstrap/dist'));
 
 app.use(passport.initialize());
 
 apiRoutesInit(app);
+
+// Catch unauthorised errors
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401);
+    res.json({"message" : err.name + ": " + err.message});
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);

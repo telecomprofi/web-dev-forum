@@ -1,0 +1,49 @@
+<div class="post-child">
+ 
+  <header class="post-header">
+    <div class="content">
+      <div class="content-inner">
+        <dl>
+          <dt>
+            by <a ui-sref="app.publicProfile({ userId: $ctrl.answer.author._id })" 
+              class="accent"
+              ng-bind="$ctrl.answer.author.profile.nickname || $ctrl.answer.author.name">
+            </a>
+          </dt>
+          <dd>{{$ctrl.answer.createdAt | date: "medium"}}</dd>
+        </dl>
+      </div>
+    </div>
+  </header>
+  
+  <div class="post-inner">
+    <div class="row">
+      <div class="col-xs-3 col-md-2">
+        <img ng-src="{{::$ctrl.answer.author.profile.image.medium}}" 
+          class="img-responsive center-block" 
+          alt="User Image">
+      </div>
+      <div class="col-xs-9 col-md-10">
+        <div class="post-content text-justify"
+          ng-bind-html="::$ctrl.text">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="post-footer clearfix">
+    <post-controls thread="$ctrl.thread"
+      role="$ctrl.role"
+      is-thread-author = "$ctrl.isThreadAuthor"
+      answer="$ctrl.answer"
+      has-best-answer="$ctrl.hasBestAnswer"
+      on-check-answer-editing="$ctrl.checkAnswerEditing(answer)"
+      on-add-like="$ctrl.addLike(answer)"
+      on-add-dislike="$ctrl.addDislike(answer)"
+      on-quote-answer="$ctrl.quoteAnswer(responseText)"
+      on-check-choose-best-answer="$ctrl.checkChooseBestAnswer(answer)"
+      on-reload="$ctrl.reload()">
+    </post-controls>
+  </footer>
+  
+</div>

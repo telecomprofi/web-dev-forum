@@ -1,0 +1,58 @@
+<div class="modal-header">
+  <button type="button" 
+    class="close" 
+    data-dismiss="modal" 
+    aria-label="Close"
+    ng-click="$ctrl.cancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h3 class="modal-title" ng-bind="::$ctrl.title"></h3>
+</div>
+<div class="modal-body">
+  <form name="$ctrl.editThreadForm" ng-submit="$ctrl.submitEditForm()">
+    <fieldset ng-disabled="$ctrl.isSubmitting">
+      <div class="form-group" ng-show="$ctrl.isAdmin">
+        <label>Topic</label>
+        <select class="form-control" 
+          name="topicSelect"
+          ng-options="topic.title for topic in $ctrl.topicList track by topic._id"
+          ng-model="$ctrl.selectedTopic"
+          ng-change="$ctrl.onSelectChange()">
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" 
+          class="form-control" 
+          name="threadTitle" 
+          placeholder="Thread name"
+          ng-change="$ctrl.onInputChange()"
+          ng-model="$ctrl.thread.title"
+          autofocus>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" 
+          rows="4" 
+          name="threadDescription"
+          ng-change="$ctrl.onInputChange()"
+          ng-model="$ctrl.thread.description">
+        </textarea>
+      </div>
+      <div role="alert" 
+        ng-show="$ctrl.errorMessage" 
+        class="alert alert-danger">
+        {{$ctrl.errorMessage}}
+      </div>
+      <button type="submit" 
+        class="btn btn-accent-inverse" 
+        ng-bind="::$ctrl.title">
+      </button>
+      <button type="button" 
+        class="btn btn-emphasize-inverse"
+        ng-click="$ctrl.cancel()">
+        Cancel
+      </button>
+    </fieldset>
+  </form>
+</div>

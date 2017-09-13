@@ -1,36 +1,68 @@
-<!--breadcrumb component-->
  <div class="breadcrumb-inner">
   <div class="container">
     <ol class="breadcrumb">
-      <li><a href="#/"><span class="glyphicon glyphicon-home accent" aria-hidden="true"></span> Board index</a></li>
-<!--      <li><a href="#/">Thread</a></li>-->
-        <li><a href="#/members"> Member list</a></li>
+      <li>
+        <a ui-sref="app.general">
+          <span class="glyphicon glyphicon-home btn-icon accent" aria-hidden="true"></span>
+          Board index
+        </a>
+      </li>
+      <li ng-bind="$ctrl.title"></li>
     </ol>
   </div>
 </div>
- 
- <div class="member-list" data-ng-cloak>
+
+<div class="member-list" data-ng-cloak>
   <div class="container">
-    <div class="panel">
-      <div class="panel-heading panel-accent">Member list</div>
+   
+    <div role="alert" ng-show="$ctrl.errorMessage" class="alert alert-danger">{{$ctrl.errorMessage}}</div>
+   
+    <form name="searchForm" class="form-horizontal">
+      <div class="form-group">
+        <label class="col-sm-2 col-sm-offset-1 control-label">Find member:</label>
+        <div class="col-sm-7">
+          <input type="text" class="form-control" placeholder="Enter user data" ng-model="$ctrl.search">
+        </div>
+      </div>
+    </form>
+   
+    <div class="panel" ng-show="$ctrl.users.length">
+      <div class="panel-heading panel-accent" ng-bind="$ctrl.title"></div>
       <table class="table table-hover table-responsive">
         <thead>
           <tr>
-            <th class="col-xs-1">#</th>
-            <th class="col-xs-5">First Name</th>
-            <th class="col-xs-5">Last Name</th>
-            <th class="col-xs-1"><span class="glyphicon glyphicon-flag accent" aria-hidden="true"></span></th>
+            <th class="col-xs-1 text-center">#</th>
+            <th class="col-xs-1 text-center">Avatar</th>
+            <th class="col-xs-2 text-center">Full Name</th>
+            <th class="col-xs-2 addition text-center">Nickname</th>
+            <th class="col-xs-2 addition text-center">Email</th>
+            <th class="col-sm-2 addition text-center">Join Date</th>
+            <th class="col-sm-1 addition text-center">State</th>
+            <th class="col-xs-1 text-center">
+              <span class="glyphicon glyphicon-flag accent" aria-hidden="true"></span>
+            </th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="user in $ctrl.users">
-            <td>{{$index + 1}}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.surname}}</td>
+          <tr ng-repeat="user in $ctrl.users | filter: $ctrl.search">
+            <td class="text-center">{{$index + 1}}</td>
             <td>
-              <div class="checkbox disabled">
+              <img ng-src="{{::user.profile.image.small}}" 
+                class="img-responsive center-block" 
+                alt="">
+            </td>
+            <td class="text-center">{{user.name}} {{user.surname}}</td>
+            <td class="text-center addition">{{user.profile.nickname}}</td>
+            <td class="text-center addition">{{user.email}}</td>
+            <td class="text-center addition">{{user.createdAt | date: "mediumDate"}}</td>
+            <td class="text-center addition"
+             ng-class="{'text-danger': user.banned}">{{user.banned ? 'Banned' : 'Active'}}</td>
+            <td class="text-center">
+              <div class="checkbox">
                 <label>
-                  <input type="checkbox" value="" disabled>
+                  <input type="checkbox" 
+                    ng-model="user.banned"
+                    ng-change="$ctrl.controlUserActions(user)">
                 </label>
               </div>
            </td>
@@ -38,5 +70,6 @@
         </tbody>
       </table>
     </div>
+    
   </div>
 </div>

@@ -1,0 +1,47 @@
+<div class="breadcrumb-inner">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li>
+        <a ui-sref="app.general">
+          <span class="glyphicon glyphicon-home btn-icon accent" aria-hidden="true"></span>
+          Board index
+        </a>
+      </li>
+      <li ng-bind="::$ctrl.topic.title"></li>
+    </ol>
+  </div>
+</div>
+
+<warning-message ng-show="$ctrl.isUserBanned"></warning-message>
+
+<div class="control-panel">
+  <div class="container">
+    <div class="control-nav">
+      <div class="button-group">
+        <button type="button"
+          class="btn btn-emphasize" 
+          ng-show="$ctrl.isUser || $ctrl.isAdmin"
+          ng-click="$ctrl.createThread($ctrl.topic._id)">
+          <span class="glyphicon glyphicon-plus-sign btn-icon accent" aria-hidden="true"></span>
+          Add Thread
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="topic-item">
+  <div class="container">
+
+    <div role="alert" ng-show="$ctrl.errorMessage" class="alert alert-danger">{{$ctrl.errorMessage}}</div>
+            
+    <topic-item topic="$ctrl.topic" 
+      is-admin="$ctrl.isAdmin"
+      current-state="$ctrl.currentState"
+      on-reload="$ctrl.reload()">
+    </topic-item>
+  
+  </div>
+</div>
+
+<guide-to-action ng-if="!$ctrl.isUser && !$ctrl.isAdmin" text="a thread"></guide-to-action>

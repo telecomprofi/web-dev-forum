@@ -1,65 +1,83 @@
 <div class="container">
   <h1 class="view-title" ng-bind="::$ctrl.title"></h1>
  
-  <form class="form-horizontal" ng-submit="$ctrl.submitForm()">
-    <div class="form-group" ng-show="$ctrl.authType === 'register'">
-      <label for="inputName" class="col-sm-2 col-md-offset-1 control-label">First name</label>
-      <div class="col-sm-10 col-md-7">
-        <input type="text" 
-          class="form-control" 
-          id="inputName" 
-          name="name"
-          placeholder="First name"
-          ng-model="$ctrl.authFormData.name">
+  <div class="row">
+    <div class="col-md-offset-3 col-sm-10 col-md-7">
+      <div role="alert" 
+        ng-show="$ctrl.errorMessage" 
+        class="alert alert-danger"
+        ng-bind="$ctrl.errorMessage">
       </div>
     </div>
-    <div class="form-group" ng-show="$ctrl.authType === 'register'">
-      <label for="inputSurname" class="col-sm-2 col-md-offset-1 control-label">Last name</label>
-      <div class="col-sm-10 col-md-7">
-        <input type="text" 
-          class="form-control" 
-          id="inputSurname" 
-          name="surname"
-          placeholder="Last name"
-          ng-model="$ctrl.authFormData.surname">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputEmail" class="col-sm-2 col-md-offset-1 control-label">Email</label>
-      <div class="col-sm-10 col-md-7">
-        <input type="email" 
-          class="form-control" 
-          id="inputEmail" 
-          name="email"
-          placeholder="somebody@example.com"
-          ng-model="$ctrl.authFormData.email">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputPassword" class="col-sm-2 col-md-offset-1 control-label">Password</label>
-      <div class="col-sm-10 col-md-7">
-        <input type="password" 
-          class="form-control" 
-          id="inputPassword" 
-          name="password"
-          placeholder="Password"
-          ng-model="$ctrl.authFormData.password">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10 col-md-offset-3 col-md-9">
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Remember me
-          </label>
+  </div>
+ 
+  <form class="form-horizontal" name="authForm" ng-submit="$ctrl.submitForm()" novalidate>
+    <fieldset ng-disabled="$ctrl.isSubmitting">
+      <div class="form-group" ng-show="$ctrl.authType === 'register'"> 
+        <label class="col-sm-2 col-md-offset-1 control-label">First name</label>
+        <div class="col-sm-10 col-md-7">
+          <input type="text" 
+            class="form-control" 
+            name="name"
+            placeholder="First name"
+            ng-model="$ctrl.authFormData.name">
         </div>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10 col-md-offset-3 col-md-9">
-        <button type="submit" class="btn btn-accent-inverse" ng-bind="$ctrl.title"></button>
+      <div class="form-group" ng-show="$ctrl.authType === 'register'">
+        <label class="col-sm-2 col-md-offset-1 control-label">Last name</label>
+        <div class="col-sm-10 col-md-7">
+          <input type="text" 
+            class="form-control" 
+            name="surname"
+            placeholder="Last name"
+            ng-model="$ctrl.authFormData.surname">
+        </div>
       </div>
-    </div>
+      <div class="form-group">
+        <label class="col-sm-2 col-md-offset-1 control-label">Email</label>
+        <div class="col-sm-10 col-md-7">
+          <input type="email" 
+            class="form-control" 
+            name="email"
+            placeholder="somebody@example.com"
+            ng-model="$ctrl.authFormData.email">
+          <div role="alert" 
+            class="alert alert-danger error-field" 
+            ng-show="authForm.email.$error.email">
+            <span>
+              Not valid email
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 col-md-offset-1 control-label">Password</label>
+        <div class="col-sm-10 col-md-7">
+          <input type="password" 
+            class="form-control" 
+            name="password"
+            placeholder="Password"
+            ng-model="$ctrl.authFormData.password"
+            ng-minlength="6"
+            ng-pattern="$ctrl.pswPattern">
+          <div role="alert" 
+            class="alert alert-danger error-field" 
+            ng-show="$ctrl.authType === 'register' && (authForm.password.$error.minlength || authForm.password.$error.pattern)">
+            <span>
+              Password can not contain less than 6 characters and must consist of UpperCase, LowerCase and Number chars
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10 col-md-offset-3 col-md-9">
+          <button type="submit" 
+            class="btn btn-accent-inverse" 
+            ng-bind="$ctrl.title">
+          </button>
+        </div>
+      </div>
+    </fieldset>
   </form>
   
 </div>

@@ -1,0 +1,31 @@
+<div class="post-controls pull-right">
+  <button type="button" 
+    class="btn btn-interact" 
+    title="Like"
+    ng-disabled="$ctrl.isThreadAuthor || $ctrl.isGuest"
+    ng-click="$ctrl.onAddLike()">
+    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+  </button>
+  <span class="rating">{{ $ctrl.thread.rating ? $ctrl.thread.rating : "" }}</span>
+  <button type="button" 
+    class="btn btn-interact" 
+    title="Dislike"
+    ng-disabled="$ctrl.isThreadAuthor || $ctrl.isGuest"
+    ng-click="$ctrl.onAddDislike()">
+    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+  </button>
+  <button type="button" 
+   class="btn btn-interact" 
+   title="Edit message"
+   ng-disabled="!$ctrl.isThreadAuthor"
+   ng-click="$ctrl.editThread($ctrl.thread)">
+    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+  </button>
+  <button type="button"
+    class="btn btn-interact" 
+    title="Quote"
+    ng-disabled="$ctrl.isGuest"
+    ng-click="$ctrl.quoteThread($ctrl.thread.description)">
+    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+  </button>
+</div>

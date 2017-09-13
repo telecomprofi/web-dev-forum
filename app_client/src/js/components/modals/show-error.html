@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <button type="button" 
+    class="close" 
+    data-dismiss="modal" 
+    aria-label="Close"
+    ng-click="$ctrl.cancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h3 class="modal-title">Please note!</h3>
+</div>
+ 
+<div class="modal-body bg-warning">
+  <p class="error-message" ng-bind="::$ctrl.errorMessage"></p>
+</div>
+
+<div class="modal-footer">
+  <button type="button"
+    class="btn btn-emphasize"
+    ng-click="$ctrl.ok()">
+    OK
+  </button>
+</div>

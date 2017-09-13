@@ -11,6 +11,7 @@
   "dependencies": {
     "@uirouter/angularjs": "~1.0.5",
     "angular": "~1.5.11",
+    "angular-ui-bootstrap": "~2.5.0",
     "body-parser": "~1.17.2",
     "bootstrap": "~3.3.7",
     "dotenv": "~4.0.0",
@@ -20,6 +21,7 @@
     "mongoose": "~4.11.2",
     "morgan": "~1.8.2",
     "passport": "~0.3.2",
+    "passport-jwt": "~2.2.1",
     "passport-local": "~1.0.0"
   },
   "devDependencies": {
@@ -27,10 +29,13 @@
     "babelify": "~7.3.0",
     "browserify": "~14.4.0",
     "del": "~3.0.0",
+    "jshint": "~2.9.5",
     "gulp": "~3.9.1",
+    "gulp-jshint": "~2.0.4",
     "gulp-autoprefixer": "~4.0.0",
     "gulp-babel": "~6.1.2",
     "gulp-sass": "~3.1.0",
+    "gulp-mongodb-data": "~3.0.0",
     "nodemon": "~1.11.0",
     "vinyl-source-stream": "~1.1.0"
   }

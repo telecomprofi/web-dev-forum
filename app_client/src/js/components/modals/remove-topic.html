@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <button type="button" 
+    class="close" 
+    data-dismiss="modal" 
+    aria-label="Close"
+    ng-click="$ctrl.cancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h3 class="modal-title" ng-bind="$ctrl.title"></h3>
+</div>
+<div class="modal-body">
+  <form name="$ctrl.removeForm" ng-submit="$ctrl.submitRemoveForm()">
+    <fieldset ng-disabled="$ctrl.isSubmitting">
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" 
+          class="form-control" 
+          name="topicTitle" 
+          placeholder="Topic name"
+          ng-model="$ctrl.topic.title"
+          readonly>
+      </div>
+      <div role="alert" 
+        ng-show="$ctrl.errorMessage" 
+        class="alert alert-danger">
+        {{$ctrl.errorMessage}}
+      </div>
+      <button type="submit" 
+        class="btn btn-accent-inverse" 
+        ng-bind="$ctrl.title">
+      </button>
+      <button type="button" 
+        class="btn btn-emphasize-inverse"
+        ng-click="$ctrl.cancel()">
+        Cancel
+      </button>
+    </fieldset>
+  </form>
+</div>

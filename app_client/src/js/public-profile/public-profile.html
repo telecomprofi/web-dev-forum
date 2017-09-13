@@ -1,0 +1,48 @@
+<warning-message ng-show="$ctrl.isUserBanned && $ctrl.isAdmin"></warning-message>
+   
+<div class="profile" data-ng-cloak>
+  <div class="container">
+   
+    <div class="panel">
+      <div class="panel-heading panel-accent" ng-bind="::$ctrl.title"></div>
+      <div class="panel-body">
+        <div class="row">
+         
+          <div class="col-sm-4">
+            <div class="profile-data profile-image">
+              <img ng-src="{{::$ctrl.profile.image.large}}" 
+                class="img-responsive center-block" 
+                alt="User Image">
+            </div>
+            <div class="profile-data profile-joined">
+              <label class="control-label">Joined:</label>
+              {{ $ctrl.profile.createdAt | date: "mediumDate" }}
+            </div>
+          </div>
+          
+          <div class="col-sm-8">
+            <div class="profile-data">
+              <div class="profile-data-group">
+                <span class="data-title">Full name</span>
+                <p class="data-content">{{$ctrl.profile.name}} {{$ctrl.profile.surname}}</p>
+              </div>
+              <div class="profile-data-group">
+                <span class="data-title">Nickname</span>
+                <p class="data-content">{{$ctrl.profile.nickname}}</p>
+              </div>
+              <div class="profile-data-group">
+                <span class="data-title">Bio</span>
+                <p class="data-content">{{$ctrl.profile.bio}}</p>
+              </div>
+              <div class="profile-data-group">
+                <span class="data-title">Location</span>
+                <p class="data-content">{{$ctrl.profile.location}}</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

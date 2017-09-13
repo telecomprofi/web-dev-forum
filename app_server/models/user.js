@@ -1,19 +1,25 @@
+'use strict';
+
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
+
+const ROLE_ADMIN = require('../config/constants').ROLE_ADMIN;
+const ROLE_USER = require('../config/constants').ROLE_USER;
 
 //======================================
 // User Schema
 //======================================
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   name: {
     type: String,
     required: true
   },
   surname: {
     type: String, 
-    required: false
+    required: true
   },
   email: {
     type: String,
@@ -24,9 +30,17 @@ const userSchema = new mongoose.Schema({
   salt: String,
   role: {
     type: String,
-    enum: ['User', 'Admin'],
-    default: 'User'
+    enum: [ROLE_USER, ROLE_ADMIN],
+    default: ROLE_USER
   },
+  banned: {
+    type: Boolean,
+    default: false
+  },
+  profile: {
+    type: Schema.Types.ObjectId,
+    ref: 'Profile'
+  }
 },
 {
   timestamps: true
@@ -62,14 +76,18 @@ userSchema.methods.generateJwt = function() {
   
   expiry.setDate(expiry.getDate() + 7);
   
-  return jwt.sign({
-    _id: this._id,
-    email: this.email,
-    name: this.name,
-    surname: this.surname,
-    role: this.role,
-    exp: parseInt(expiry.getTime() / 1000)
-  }, process.env.JWT_SECRET);
+  return jwt.sign(
+    {
+      _id: this._id,
+      email: this.email,
+      name: this.name,
+      surname: this.surname,
+      role: this.role,
+      exp: parseInt(expiry.getTime() / 1000)
+    },
+    process.env.JWT_SECRET
+  );
+  
 };
 
 module.exports = mongoose.model('User', userSchema);

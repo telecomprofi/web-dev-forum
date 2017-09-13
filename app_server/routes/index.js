@@ -1,8 +1,9 @@
-const userRouter = require('./user.routes');
-const authRouter = require('./auth.routes');
+'use strict';
 
+const apiRouter = require('./api.routes');
 
 module.exports = function (app) {
-  app.use('/api/users', userRouter);
-  app.use('/api/auth', authRouter);
+  
+// Set url for API group routes
+  app.use('/api', apiRouter);
 };

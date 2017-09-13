@@ -1,0 +1,39 @@
+<div class="post-controls pull-right">
+  <button type="button" 
+    class="btn btn-interact" 
+    ng-class="{ 'accent': $ctrl.answer.isUseful }"
+    title="Useful"
+    ng-hide="!$ctrl.isThreadAuthor || $ctrl.sameAuthor || !$ctrl.answer.isUseful && $ctrl.hasBestAnswer"
+    ng-click="$ctrl.onCheckChooseBestAnswer({answer: $ctrl.answer})">
+    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+  </button>
+  <button type="button" 
+    class="btn btn-interact" 
+    title="Like"
+    ng-disabled="$ctrl.isAnswerAuthor || $ctrl.isGuest"
+    ng-click="$ctrl.onAddLike({answer: $ctrl.answer})">
+    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+  </button>
+  <span class="rating">{{ $ctrl.answer.rating ? $ctrl.answer.rating : "" }}</span>
+  <button type="button" 
+    class="btn btn-interact" 
+    title="Dislike"
+    ng-disabled="$ctrl.isAnswerAuthor || $ctrl.isGuest"
+    ng-click="$ctrl.onAddDislike({answer: $ctrl.answer})">
+    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+  </button>
+  <button type="button" 
+   class="btn btn-interact" 
+   title="Edit message"
+   ng-disabled="!$ctrl.isAnswerAuthor"
+   ng-click="$ctrl.onCheckAnswerEditing({answer: $ctrl.answer})">
+    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+  </button>
+  <button type="button"
+    class="btn btn-interact" 
+    title="Quote"
+    ng-disabled="$ctrl.isGuest"
+    ng-click="$ctrl.onQuoteAnswer({responseText: $ctrl.answer.responseText})">
+    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+  </button>
+</div>

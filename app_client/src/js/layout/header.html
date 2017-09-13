@@ -1,34 +1,58 @@
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-     
-      <div class="navbar-header">
-        <a ui-sref="app.general" class="navbar-brand">Web-Development Forum</a>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
-         data-target="#header-nav" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
 
-      <div class="pull-right">
-        <div class="collapse navbar-collapse" id="header-nav">
-          <ul class="nav navbar-nav">
-            <li>
-              <a ui-sref="app.login"><span class="glyphicon glyphicon-log-in accent" aria-hidden="true"></span> Log in</a>
-            </li>
-            <li>
-              <a ui-sref="app.register"><span class="glyphicon glyphicon glyphicon-registration-mark accent" aria-hidden="true"></span> Register</a>
-            </li>
-        <!--
-            <li>
-              <a ui-sref="app.logout"><span class="glyphicon glyphicon-log-out accent" aria-hidden="true"></span> Log out</a>
-            </li>
-        -->
-          </ul>
-        </div>
-      </div>
-      
+    <div class="navbar-header">
+      <a ui-sref="app.general" class="navbar-brand">Web-Development Forum</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+       data-target="#header-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
-  </nav>
+
+    <div class="pull-right">
+      <div class="collapse navbar-collapse" id="header-nav">
+
+        <!-- Show menu options for logged out users -->
+        <ul class="nav navbar-nav" show-authed="false">
+          <li>
+            <a ui-sref="app.login">
+              <span class="glyphicon glyphicon-log-in btn-icon accent" 
+                aria-hidden="true"></span>
+              Log in
+            </a>
+          </li>
+          <li>
+            <a ui-sref="app.register">
+              <span class="glyphicon glyphicon-registration-mark btn-icon accent"
+                aria-hidden="true"></span>
+              Register
+            </a>
+          </li>
+        </ul>
+
+        <!-- Show menu options for logged in users -->
+        <ul class="nav navbar-nav" show-authed="true" data-ng-cloak>
+          <li>
+            <a ui-sref="app.profile({ userId: $ctrl.currentUser._id })">
+              <span class="glyphicon glyphicon-user btn-icon accent" 
+                aria-hidden="true"></span>
+              {{ $ctrl.currentUser.profile.nickname || $ctrl.currentUser.name }}
+            </a>
+          </li>
+          <li>
+            <a ui-sref="app.general" ng-click="$ctrl.logout()">
+              <span class="glyphicon glyphicon-log-out btn-icon accent"
+                aria-hidden="true"></span>
+              Log out
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+  </div>
+</nav>

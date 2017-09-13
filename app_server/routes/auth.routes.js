@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const authRouter = express.Router();
 const ctrlAuth = require('../controllers/api/auth.api');

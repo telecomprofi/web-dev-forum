@@ -1,3 +1,149 @@
-<div class="container">
-  <p>Hello from profile</p>
+<div class="breadcrumb-inner">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li>
+        <a ui-sref="app.general">
+          <span class="glyphicon glyphicon-home btn-icon accent" aria-hidden="true"></span>
+          Board index
+        </a>
+      </li>
+      <li ng-bind="::$ctrl.title"></li>
+    </ol>
+  </div>
+</div>
+  
+<warning-message ng-show="$ctrl.isUserBanned"></warning-message>
+   
+<div class="profile" data-ng-cloak>
+  <div class="container">
+
+    <div role="alert" 
+      ng-show="$ctrl.errorMessage" 
+      class="alert alert-danger"
+      ng-bind="$ctrl.errorMessage">
+    </div>
+   
+    <div class="panel">
+      <div class="panel-heading panel-accent" ng-bind="::$ctrl.title"></div>
+      <div class="panel-body">
+        <div class="row">
+         
+          <div class="col-sm-4">
+            <div class="profile-data profile-image">
+              <img ng-src="{{::$ctrl.profile.image.large}}" 
+                class="img-responsive center-block" 
+                alt="User Image">
+            </div>
+            <div class="profile-data profile-name"
+              ng-bind=":: $ctrl.profile.user.nickname || $ctrl.profile.user.name">
+            </div>
+            <div class="profile-data profile-joined">
+              <label class="control-label">Joined:</label>
+              {{ $ctrl.profile.user.createdAt | date: "mediumDate" }}
+            </div>
+          </div>
+          
+          <div class="col-sm-8">
+            <form name="profileForm" novalidate ng-submit="$ctrl.submitProfileForm()">
+              <fieldset ng-disabled="$ctrl.isSubmitting">
+                <div class="form-group"> 
+                  <label class="control-label">First name</label>
+                  <input type="text" 
+                    class="form-control" 
+                    name="name"
+                    placeholder="First name"
+                    ng-change="$ctrl.onInputChange()"
+                    ng-model="$ctrl.profileFormData.name"
+                    required>
+                  <div role="alert" 
+                    class="alert alert-danger error-field" 
+                    ng-show="profileForm.name.$error.required">
+                    <span>The first name required.</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Last name</label>
+                  <input type="text" 
+                    class="form-control" 
+                    name="surname"
+                    placeholder="Last name"
+                    ng-change="$ctrl.onInputChange()"
+                    ng-model="$ctrl.profileFormData.surname"
+                    required>
+                  <div role="alert" 
+                    class="alert alert-danger error-field" 
+                    ng-show="profileForm.surname.$error.required">
+                    <span>The last name required.</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Email</label>
+                  <p class="form-control-static" ng-bind="::$ctrl.profileFormData.email"></p>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Password</label>
+                  <input type="password" 
+                    class="form-control" 
+                    name="password"
+                    placeholder="New password"
+                    ng-change="$ctrl.onInputChange()"
+                    ng-model="$ctrl.profileFormData.password"
+                    ng-minlength="6"
+                    ng-pattern="$ctrl.pswPattern">
+                  <div role="alert" 
+                    class="alert alert-danger error-field" 
+                    ng-show="profileForm.password.$error.minlength || profileForm.password.$error.pattern">
+                    <span>
+                      Password can not contain less than 6 characters and must consist of UpperCase, LowerCase and Number chars
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Nickname</label>
+                  <input type="text" 
+                    class="form-control" 
+                    name="nickname"
+                    placeholder="Nickname"
+                    ng-change="$ctrl.onInputChange()"
+                    ng-model="$ctrl.profileFormData.nickname">
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Bio</label>
+                  <textarea class="form-control"
+                    rows="3"
+                    name="bio"
+                    placeholder="Short bio about you"
+                    ng-change="$ctrl.onInputChange()"
+                    ng-model="$ctrl.profileFormData.bio">
+                  </textarea>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Location</label>
+                  <input type="text" 
+                    class="form-control" 
+                    name="location"
+                    placeholder="Location"
+                    ng-change="$ctrl.onInputChange()"
+                    ng-model="$ctrl.profileFormData.location">
+                </div>
+                <div class="form-group">
+                  <button type="submit" 
+                    class="btn btn-accent-inverse"
+                    ng-disabled="profileForm.$invalid">
+                    Save Profile
+                  </button>
+                  <button type="button" 
+                    class="btn btn-emphasize-inverse"
+                    ng-click="$ctrl.resetProfileForm(profileForm)">
+                    Cancel Changes
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

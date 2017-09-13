@@ -29,7 +29,7 @@ assets
 dist
 
 # Environment variables
-.env
+# .env
 
 # Debug log from npm
 npm-debug.log

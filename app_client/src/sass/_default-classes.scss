@@ -74,7 +74,12 @@
   padding: 2px 5px;
 }
 
-.panel-heading {
+.btn-icon {
+  margin-right: 8px;
+}
+
+.panel-heading,
+.table-heading {
   .btn-control:hover
   {
     background-color: $panelColor;
@@ -105,6 +110,16 @@
   color: $accentColor;
 }
 
+.btn-interact.accent,
+.btn-interact.accent:active,
+.btn-interact.accent:focus {
+  color: $accentColor;
+}
+
+.btn-interact.accent:hover {
+  color: $accentColorHover;
+}
+
 .content-controls {
   display: flex;
   justify-content: flex-end;
@@ -113,3 +128,9 @@
 .by-author {
   font-weight: 400;
 }
+
+.error-field {
+  margin-top: 10px;
+  padding: 10px 12px;
+}
+

@@ -1,0 +1,36 @@
+<div class="add-answer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div role="alert" 
+          ng-show="$ctrl.errorMessage" 
+          class="alert alert-danger">
+          {{$ctrl.errorMessage}}
+        </div>
+      </div>
+    </div>
+    <form name="$ctrl.answerForm" ng-submit="$ctrl.submitAnswerForm()">
+      <fieldset ng-disabled="$ctrl.isSubmitting">
+        <div class="row">
+          <div class="form-group col-md-8">
+            <label>Your answer</label>
+            <textarea class="form-control" 
+              rows="4" 
+              name="responseText"
+              placeholder="Write your answer..."
+              ng-change="$ctrl.onInputChange()"
+              ng-model="$ctrl.responseText">
+            </textarea>
+          </div>
+          <div class="col-md-8">
+            <button type="submit" 
+              class="btn btn-emphasize"
+              ng-bind="::$ctrl.title">
+              <span class="glyphicon glyphicon-share-alt btn-icon accent" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+'use strict';
+
 export default class JWT {
   constructor(AppConstants, $window) {
     'ngInject';

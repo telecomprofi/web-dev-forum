@@ -1,3 +1,5 @@
+'use strict';
+
 function MembersConfig($stateProvider, $httpProvider) {
   'ngInject';
 
@@ -7,9 +9,14 @@ function MembersConfig($stateProvider, $httpProvider) {
     templateUrl: 'src/js/members/members.html',
     controller: 'MembersCtrl',
     controllerAs: '$ctrl',
-    title: 'Members'
+    title: 'Member List',
+    resolve: {
+      role: function(User) {
+        return User.checkRole();
+      }
+    }
   });
   
-};
+}
 
 export default MembersConfig;

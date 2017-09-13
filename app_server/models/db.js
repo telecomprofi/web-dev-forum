@@ -1,7 +1,9 @@
+'use strict';
+
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
-const dbURI = 'mongodb://localhost/forum';
+const dbURI = 'mongodb://localhost/webdevforum';
 //if (process.env.NODE_ENV === 'production') {
 //  dbURI = 'mongodb://nsobkovych:password@mongolab.com:33669/nsobkovych';
 //  dbURI = process.env.MONGOLAB_URI;
@@ -19,3 +21,7 @@ mongoose.connection.on('disconnected', function () {
 });
 
 require('./user');
+require('./profile');
+require('./topic');
+require('./thread');
+require('./answer');

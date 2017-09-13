@@ -1,9 +1,12 @@
+'use strict';
+
 export default class Member {
-  constructor(AppConstants, $http) {
+  constructor(AppConstants, $http, JWT) {
     'ngInject';
 
     this._AppConstants = AppConstants;
     this._$http = $http;
+    this._JWT = JWT;
   }
   
   /**
@@ -14,6 +17,9 @@ export default class Member {
     return this._$http({
       url: this._AppConstants.api + '/users',
       method: 'GET',
+      headers: {
+        Authorization: `JWT ${this._JWT.get()}`
+      }
     }).then((res) => res.data);
   }
 

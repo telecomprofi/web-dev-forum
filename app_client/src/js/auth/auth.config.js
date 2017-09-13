@@ -1,4 +1,6 @@
-function AuthConfig($stateProvider, $httpProvider) {
+'use strict';
+
+function AuthConfig($stateProvider) {
   'ngInject';
 
   $stateProvider
@@ -7,16 +9,26 @@ function AuthConfig($stateProvider, $httpProvider) {
     url: '/login',
     controller: 'AuthCtrl as $ctrl',
     templateUrl: 'src/js/auth/auth.html',
-    title: 'Sign in'
+    title: 'Sign in',
+    resolve: {
+      auth: function(User) {
+        return User.ensureAuthIs(false);
+      }
+    }
   })
 
   .state('app.register', {
     url: '/register',
     controller: 'AuthCtrl as $ctrl',
     templateUrl: 'src/js/auth/auth.html',
-    title: 'Sign up'
+    title: 'Sign up',
+    resolve: {
+      auth: function(User) {
+        return User.ensureAuthIs(false);
+      }
+    }
   });
 
-};
+}
 
 export default AuthConfig;
