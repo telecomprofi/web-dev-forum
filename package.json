@@ -1,7 +1,7 @@
 {
   "name": "forum",
   "version": "1.0.0",
-  "description": "Simple Forum",
+  "description": "Web Development Forum is a project based on MEAN stack",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js"

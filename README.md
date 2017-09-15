@@ -1,12 +1,16 @@
-# Simple Forum
+# Web Development Forum
 
-## Required preconditions
+Web Development Forum is a project based on MEAN stack (MongoDB, Express.js, AngularJS, Node.js). This implementation contains modular code and a component-based application structure using Angular 1.5 and ES6. It uses Gulp and a handful of Gulp plugins to perform various tasks. The project has a responsive layout.
+
+## Getting Started
+
+### Required preconditions
 
 * [install](https://howtonode.org/how-to-install-nodejs) Node.js
 * install Gulp
 * install MongoDB version 3.4.6
 
-## Deployement steps
+### Deployement steps
 
 * clone GIT repository
 * install dependencies
@@ -26,26 +30,25 @@
 
 * in browser go to the address [http://localhost:3000](http://localhost:3000)
 
-* by default server will create admin account in MongoDB with following credentials: 
+## Usage overview
+
+Web Development Forum is hierarchical in structure: it contains a number of topics, each of which has threads. Users have to register with the forum and then subsequently log in in order to post messages (answers) within the certain thread. Registered users can also add likes or dislikes, edit their answers, choose the best answer, manage their profiles etc. Web Development Forum has an administrator who has extended privileges: manage other registered users, forum topics and threads. Unregistered users can view the contents of the forum. 
+
+There are predefined data including the administrator, registered users, topics, answers etc. in the current deployment.
+
+* The administrator account has following credentials:
   * email: `admin@forum.ua`
   * password: `Password1`
-   
-* these are your options:
-  * Register new users
-  * Allow the users to log in
-  * Log in as an administrator
-  * The administrator can view all the users (by using "Member List" button)
-  * The administrator can add topics (by using "Add Topic" button)
-  * The administrator can update and remove topics (by using appropriate control buttons)
-  * The administrator and user can add a new thread (by using "Add Thread" button)
-  * The administrator can update and remove threads (by using appropriate control buttons)
-  * The users can update threads (by using appropriate control buttons)
-  * The administrator and the users can create and edit answers (by using appropriate control buttons)
-  * The administrator and the users can set likes or dislikes for threads and answers (by using appropriate control buttons)
-  * The thread author can choose the best answer (by using appropriate control button)
-  * The administrator can ban the user. The banned user can only edit his profile.
-  * The administrator and the users can edit their profiles
-  * All the visitors can view users profiles (public versions)
-  * Allow the users and the administrator to log out
   
-  * All mock users have the same password: `Secret1`
+* All the registered users have the same password:
+  * `Secret1`
+
+## Screenshots of the project
+
+![Board index, screen resolution 600x480 px](screenshots/01.jpg)
+![Thread, screen resolution 600x480 px](screenshots/02.jpg)
+![Edit thread, screen resolution 1366x768 px](screenshots/03.jpg)
+![Sign up, screen resolution 600x480 px](screenshots/04.jpg)
+![Member list, screen resolution 1366x768 px](screenshots/05.jpg)
+![Admin profile, screen resolution 400x480 px](screenshots/06.jpg)
+![Topic, screen resolution 320x480 px](screenshots/07.jpg)
