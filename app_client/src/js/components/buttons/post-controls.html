@@ -3,7 +3,7 @@
     class="btn btn-interact" 
     ng-class="{ 'accent': $ctrl.answer.isUseful }"
     title="Useful"
-    ng-hide="!$ctrl.isThreadAuthor || $ctrl.sameAuthor || !$ctrl.answer.isUseful && $ctrl.hasBestAnswer"
+    ng-show="$ctrl.showSign"
     ng-click="$ctrl.onCheckChooseBestAnswer({answer: $ctrl.answer})">
     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
   </button>

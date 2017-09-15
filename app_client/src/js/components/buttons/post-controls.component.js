@@ -29,6 +29,16 @@ class PostControlsCtrl {
     }
     
     this.sameAuthor = this.thread.author.email === this.answer.author.email;
+    
+    this.showSign = false;
+    
+    if (this.answer.isUseful && this.hasBestAnswer) {
+      this.showSign = true;
+    }
+    
+    if (this.isThreadAuthor && !this.sameAuthor && !this.answer.isUseful && !this.hasBestAnswer) {
+      this.showSign = true;
+    }
 
   }
   
