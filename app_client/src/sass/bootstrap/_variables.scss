@@ -415,9 +415,11 @@ $navbar-inverse-brand-hover-color:          $accentColorHover !default;
 $navbar-inverse-brand-hover-bg:             transparent !default;
 
 // Inverted navbar toggle
-$navbar-inverse-toggle-hover-bg:            #333 !default;
+//$navbar-inverse-toggle-hover-bg:            #333 !default;
+$navbar-inverse-toggle-hover-bg:            $accentColorHover;
 $navbar-inverse-toggle-icon-bar-bg:         #fff !default;
-$navbar-inverse-toggle-border-color:        #333 !default;
+//$navbar-inverse-toggle-border-color:        #333 !default;
+$navbar-inverse-toggle-border-color:        transparent;
 
 
 //== Navs
