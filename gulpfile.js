@@ -75,7 +75,7 @@ gulp.task('browserify', function() {
 gulp.task('metadata', function() {
   gulp.src(paths.dbMetadata)
     .pipe(mongodbData({
-      mongoUrl: 'mongodb://localhost/webdevforum',
+      mongoUrl: process.env.DB_URL || 'mongodb://localhost/webdevforum',
       dropCollection: true
     }))
 })

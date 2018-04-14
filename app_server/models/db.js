@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
-const dbURI = 'mongodb://localhost/webdevforum';
+const dbURI = process.env.DB_URL || 'mongodb://localhost/webdevforum';
 //if (process.env.NODE_ENV === 'production') {
 //  dbURI = 'mongodb://nsobkovych:password@mongolab.com:33669/nsobkovych';
 //  dbURI = process.env.MONGOLAB_URI;
